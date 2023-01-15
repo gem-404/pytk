@@ -25,7 +25,13 @@ used by wal to change the wallpaper.
 
 The images are selected by clicking on them, and the wallpaper is changed.
 
-If you have any improvements on the tkinter module, such as how the module can
+@ I am also thinking of adding more core usage on this just to cut the
+few ms delay shown. I am thinking of using the multiprocessing module
+to run the wal functions in separate processes, and then kill the processes
+after the wallpaper is changed. This will reduce the delay, but I am not
+sure if it will work. I will try it out and see if it works.
+
+If you have any improvements on the gui module, such as how the module can
 be made scrollable, or how the images can be resized to fit the window, or just
 any improvements or comments, please let me know.
 
@@ -72,9 +78,8 @@ def add_and_remove_prefix_and_suffixes(text: str,
 
 def select_image(event):
     """Select an image from the GUI"""
-    global CURRENT_IMAGE
-    CURRENT_IMAGE = event.widget.cget("text")
-    curr_img = add_and_remove_prefix_and_suffixes(CURRENT_IMAGE, PATH_SUFFIX,
+    current_img = event.widget.cget("text")
+    curr_img = add_and_remove_prefix_and_suffixes(current_img, PATH_SUFFIX,
                                                   PATH_PREFIX, '.png')
 
     open_image(curr_img)
@@ -147,7 +152,6 @@ canvas.configure(yscrollcommand=yscrollbar.set)
 
 canvas.pack(side="left", fill="both", expand=True)
 
-CURRENT_IMAGE = None
 
 NEW_COUNTER = 1
 ROW_COUNTER = 0
