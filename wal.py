@@ -35,6 +35,10 @@ If you have any improvements on the gui module, such as how the module can
 be made scrollable, or how the images can be resized to fit the window, or just
 any improvements or comments, please let me know.
 
+# I have then added this module to my own simple X hotkey daemon rc file,
+# and I have added a keybind to change the wallpaper. I have also added
+# a keybind to change the wallpaper to a random image from the folder.
+
 I would love to hear from you.
 
 Thank You 💗💗💗💗💗.
