@@ -44,4 +44,14 @@ any improvements or comments, please let me know.
 I would love to hear from you.
 
 -----------------------------------------------------------------------------
+# My Notes
+
+I have then added this module to my own simple X hotkey daemon rc file,
+and I have added a keybind to change the wallpaper. I have also added
+a keybind to change the wallpaper to a random image from the folder.
+
+If you want to check it out, you can do so in my config repo
+[gem-404/config](https://github.com/gem-404/config/sxhkdrc)
+
+------------------------------------------------------------------------------
                             Thank You 💗💗💗💗💗.
