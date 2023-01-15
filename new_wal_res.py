@@ -1,3 +1,9 @@
+#!usr/bin/env python3
+"""
+This code is used to create a images with 100x100 resolution
+from a source folder to some destination folder. The images are
+then used to by a GUI to change the wallpaper of the system.
+"""
 
 import os
 from PIL import Image
@@ -16,10 +22,12 @@ def store_images(image_folder: str, dest_folder: str):
 
 
 def main():
+    """Just the main function, nothing special"""
     # Store the images in the folder images_folder
     # in another folder, with 100x100 resolution
-    images_folder = '/home/ephantus/sub_anime'
-    destin_folder = '/home/ephantus/new_files'
+
+    images_folder: str = '/home/ephantus/sub_anime'  # Source folder
+    destin_folder: str = '/home/ephantus/new_files'  # Destination folder
 
     store_images(images_folder, destin_folder)
 
