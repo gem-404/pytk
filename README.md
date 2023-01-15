@@ -51,7 +51,7 @@ and I have added a keybind to change the wallpaper. I have also added
 a keybind to change the wallpaper to a random image from the folder.
 
 If you want to check it out, you can do so in my config repo
-[gem-404/config](https://github.com/gem-404/config/sxhkdrc)
+[gem-404/config](https://github.com/gem-404/config/)
 
 ------------------------------------------------------------------------------
                             Thank You 💗💗💗💗💗.
