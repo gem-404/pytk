@@ -153,13 +153,49 @@ canvas.configure(yscrollcommand=yscrollbar.set)
 canvas.pack(side="left", fill="both", expand=True)
 
 
-NEW_COUNTER = 1
-ROW_COUNTER = 0
-COL_COUNTER = 0
+NEW_COUNTER: int = 1
+ROW_COUNTER: int = 0
+COL_COUNTER: int = 0
+
+
+# def images_to_grid(images_folder: str, image, counter: int,
+#                    row: int, col: int):
+#
+#     counter += 1
+#     # Open the image file
+#     image = Image.open(os.path.join(images_folder, image))
+#
+#     # Create a PhotoImage object
+#     photo = ImageTk.PhotoImage(image)
+#
+#     # Create a label for the image
+#     label = ttk.Label(canvas, image=photo)
+#     label.image = photo  # Keep a reference to the image
+#     # Error on the above line ({on the editor only, not when running}),
+#     # but it works...
+#     # The error states 'Cannot assign member "image" for type `label`'
+#     # Without it, the code fails...
+#
+#     label.grid(row=row, column=col)
+#
+#     # Attach a command to the label
+#     label.bind("<Button-1>", select_image)
+#     label.config(text=os.path.join(images_folder, image_file))
+#
+#     # After the first 10 images, move to the next row
+#     col += 1
+#
+#     # Displays 10 images per row
+#     if counter % 10 == 0:
+#         row += 1
+#         col = 0
 
 
 for image_file in os.listdir(images_folder):
     if image_file.endswith('.jpg') or image_file.endswith('.png'):
+
+        # images_to_grid(images_folder, image_file, NEW_COUNTER,
+        #                ROW_COUNTER, COL_COUNTER)
 
         NEW_COUNTER += 1
         # Open the image file
