@@ -1,4 +1,4 @@
-# /usr/bin/env python3
+#!/usr/bin/env python3
 # Path: wal.py
 """
 This module uses tkinter to output a GUI with the images in the folder
@@ -72,24 +72,25 @@ def add_and_remove_prefix_and_suffixes(text: str,
 
 def select_image(event):
     """Select an image from the GUI"""
-    global panel
-    global current_image
-    current_image = event.widget.cget("text")
-    curr_img = add_and_remove_prefix_and_suffixes(current_image, PATH_SUFFIX,
+    global CURRENT_IMAGE
+    CURRENT_IMAGE = event.widget.cget("text")
+    curr_img = add_and_remove_prefix_and_suffixes(CURRENT_IMAGE, PATH_SUFFIX,
                                                   PATH_PREFIX, '.png')
 
     open_image(curr_img)
 
 
 # Function to remove the prefix new/ from the image name
-def remove_prefix(text, prefix):
+def remove_prefix(text: str, prefix: str):
+    """Function to remove a prefix from a string value"""
     if text.startswith(prefix):
         return text[len(prefix):]
     return text
 
 
 # Function to remove suffixes from the image name from the last
-def remove_suffix(text, suffix):
+def remove_suffix(text: str, suffix: str):
+    """Function to remove a suffix from a string value"""
     if text.endswith(suffix):
         return text[:-len(suffix)]
     return text
@@ -97,6 +98,7 @@ def remove_suffix(text, suffix):
 
 # Function to add a prefix to image name
 def add_prefix(text, prefix):
+    """Function to add a prefix to a string value"""
     return prefix + text
 
 
@@ -145,17 +147,17 @@ canvas.configure(yscrollcommand=yscrollbar.set)
 
 canvas.pack(side="left", fill="both", expand=True)
 
-current_image = None
+CURRENT_IMAGE = None
 
-new_counter = 1
-row_counter = 0
-col_counter = 0
+NEW_COUNTER = 1
+ROW_COUNTER = 0
+COL_COUNTER = 0
 
 
 for image_file in os.listdir(images_folder):
     if image_file.endswith('.jpg') or image_file.endswith('.png'):
 
-        new_counter += 1
+        NEW_COUNTER += 1
         # Open the image file
         image = Image.open(os.path.join(images_folder, image_file))
 
@@ -170,19 +172,19 @@ for image_file in os.listdir(images_folder):
         # The error states 'Cannot assign member "image" for type `label`'
         # Without it, the code fails...
 
-        label.grid(row=row_counter, column=col_counter)
+        label.grid(row=ROW_COUNTER, column=COL_COUNTER)
 
         # Attach a command to the label
         label.bind("<Button-1>", select_image)
         label.config(text=os.path.join(images_folder, image_file))
 
         # After the first 10 images, move to the next row
-        col_counter += 1
+        COL_COUNTER += 1
 
         # Displays 10 images per row
-        if new_counter % 10 == 0:
-            row_counter += 1
-            col_counter = 0
+        if NEW_COUNTER % 10 == 0:
+            ROW_COUNTER += 1
+            COL_COUNTER = 0
 
 
 root.mainloop()
