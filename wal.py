@@ -62,7 +62,7 @@ PATH_PREFIX = '/home/ephantus/new_files/new-'
 def check_path(path: str) -> bool:
     """This function checks if a given path exists in the computer."""
 
-    return True if os.path.exists(path) else False
+    return bool(os.path.exists(path))
 
 
 # Function to create the GUI that will prompt the user for the images path
@@ -87,7 +87,7 @@ IMG_PATH = check_path(PATH_PREFIX) if PATH_PREFIX else create_gui()
 def check_os() -> bool:
     """Function to check the OS"""
 
-    return True if os.name == 'nt' else False
+    return bool(os.name == 'nt')
 
 
 # Function to change the wallpaper from a windows machine
