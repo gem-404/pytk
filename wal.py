@@ -47,6 +47,7 @@ Thank You 💗💗💗💗💗.
 import os
 import tkinter as tk
 from tkinter import ttk
+from tkinter.filedialog import askdirectory
 from PIL import Image, ImageTk
 
 
@@ -55,6 +56,48 @@ PATH_SUFFIX = '/home/ephantus/sub_anime/'
 
 PATH_PREFIX = '/home/ephantus/new_files/new-'
 # Path to the folder containing the images with the 100x100 resolution
+
+
+# Function to check whether a given path exists or not
+def check_path(path: str) -> bool:
+    """This function checks if a given path exists in the computer."""
+
+    return True if os.path.exists(path) else False
+
+
+# Function to create the GUI that will prompt the user for the images path
+def create_gui():
+    """This gui will get the path folder in which images are stored"""
+
+    path = askdirectory(title='Select Images Folder')
+
+    return path
+
+
+# Before we get the IMG_PATH, we must check if the PATH_PREFIX exists.
+# The path_prefix is the path to the folder containing the images with
+# the 100x100 resolution. If the path_prefix does not exist, then we
+# must create it. The path_prefix is created by the program, and is
+# created in the same folder as the images with the higher resolution.
+IMG_PATH = check_path(PATH_PREFIX) if PATH_PREFIX else create_gui()
+
+
+# Function to check whether a user in in windows or linux
+# environment
+def check_os() -> bool:
+    """Function to check the OS"""
+
+    return True if os.name == 'nt' else False
+
+
+# Function to change the wallpaper from a windows machine
+def change_wallpaper_windows(image_path: str):
+    """Changing wallpaper using CMD commands in windows"""
+
+    os.system(f'''reg add """HKEY_CURRENT_USER\\Control Panel\\Desktop""" /v
+              Wallpaper /t REG_SZ /d {image_path} /f''')
+
+    os.system('rundll32.exe user32.dll,UpdatePerUserSystemParameters')
 
 
 def open_image(image_path: str):
@@ -86,7 +129,8 @@ def select_image(event):
     curr_img = add_and_remove_prefix_and_suffixes(current_img, PATH_SUFFIX,
                                                   PATH_PREFIX, '.png')
 
-    open_image(curr_img)
+    _ = change_wallpaper_windows(curr_img) \
+        if check_os() else open_image(curr_img)
 
 
 # Function to remove the prefix new/ from the image name
@@ -125,7 +169,7 @@ num_files: int = len([f for f in os.listdir(images_folder)
 width: int = 100 * 10
 
 # Height must be 150 * (num_files / 10)
-height: int = round(100 * (num_files / 10)) + 100
+height: int = round(100 * (num_files / 10)) + 50
 
 # Give the window a width and a height
 # And make resizable to be false
