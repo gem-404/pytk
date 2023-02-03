@@ -53,5 +53,20 @@ a keybind to change the wallpaper to a random image from the folder.
 If you want to check it out, you can do so in my config repo
 [gem-404/config](https://github.com/gem-404/config/)
 
+# Now, For windows users.
+
+Available also for windows users.
+
+
+
+-----------------------------------------------------------------------------
+# Todo
+
+After creating the folder with 100x100 pictures resolution in the same
+folder after the program runs, let PREFIX_PATH be the path to the folder.
+
+At all times, ensure that the number of images in the PREFIX_PATH folder equal
+to the number of images in the parent_folder.
+
 ------------------------------------------------------------------------------
                             Thank You 💗💗💗💗💗.
